@@ -1,7 +1,7 @@
 Team Task Distribution:
 | **Team Member Name**     | **Team Member ID**      | **Assigned Functional Requirements (FRs)**           |
 |--------------------------|-------------------------|------------------------------------------------------|
-| MD WAID SHAHRIAR         | 221-15-4646             | User Registration & Authentication, Home page        |
+| MD WALID SHAHRIAR         | 221-15-4646             | User Registration & Authentication, Home page        |
 | Partho Biswas            | 0242220005101012        | Complaint Submission & Management                    |
 | Sumaya Akter Eva         | 0242220005101042        | Service Request Submission & Management              |
 | Sworna Sarker            | 0242220005101040        | Department Dashboard & Task Assignment               |
