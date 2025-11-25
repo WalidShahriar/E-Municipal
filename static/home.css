@@ -7,7 +7,7 @@
     justify-content: left; /* Horizontally center the text */
     align-items: center;     /* Vertically center the text */
 
-    padding-left: 5rem;
+    padding-left: 50px;
 }
 
 .back-video {
@@ -57,3 +57,4 @@
     font-weight: 400;
     color: #eef3f7;
 }
+
