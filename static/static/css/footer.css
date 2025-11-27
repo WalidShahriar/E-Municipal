@@ -1,0 +1,215 @@
+#footer_container {
+
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#footer_sub_1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    padding: 32px 50px;
+    
+    background-color: #86004a;
+}
+
+#footer_govt_logo_name {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    padding-right: 50px;
+}
+
+#footer_govt_logo_name p {
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+#footer_subscribe {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 50px;
+    border-left: 2px solid rgb(123, 123, 123);
+}
+
+#footer_subscribe p {
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+    word-spacing: 1.5px;
+}
+
+#subscrice_btn {
+    text-decoration: none;
+    margin-left: 50px;
+
+    padding: 15px 30px;
+    font-size: 1.4rem;
+    font-family: "effra-cc", sans-serif;
+    font-weight: bold;
+    color: #fffffb;
+    background-color: transparent; 
+    border: 2px solid #fffffb;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#subscrice_btn:hover {
+    background-color: #5f0637;
+    transition: 0.3s;
+}
+
+
+
+#footer_sub_2 {
+    padding: 50px 50px;
+    background-color: #6f0841;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+#footer_links {
+    display: flex;
+    justify-content: space-between;
+}
+
+#services ul {
+    line-height: 2.5;
+    list-style: none;
+}
+
+#services ul li a{
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+#contact {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact p {
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+#contact a {
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-weight: bold;
+}
+
+#contact_1 {
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#contact_heading_1 p {
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#contact_2 {
+    padding-top: 20px;
+    border-top: 2px solid rgb(123, 123, 123);
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#contact_heading_2 p {
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#accommodations {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#accommodations p {
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+#accommodations_heading p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#accommodations_message p {
+    line-height: 1.6;
+}
+
+#accommodations_message a {
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-weight: bold;
+}
+
+#follow {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#follow p {
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+#follow_heading p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#social_media_icons {
+    display: flex;
+    gap: 30px;
+}
+
+
+
+
+#copyright_section {
+    margin-top: 50px;
+    text-align: center;
+    color: #fffffb;
+    font-family: "effra-cc", sans-serif;
+    font-size: 1.4rem;
+    font-weight: normal;
+    word-spacing: 1.5px;
+}
+
+#footer_city {
+    font-weight: bold;
+}
+
+
