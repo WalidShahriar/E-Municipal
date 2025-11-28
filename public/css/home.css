@@ -176,5 +176,5 @@
 
 .service_4_box:hover h3 {
     text-decoration: none;
-    transition: text-decoration 0.6s ease-in-out;
+    transition: text-decoration 0.6s ease-out;
 }
