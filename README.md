@@ -118,10 +118,13 @@ Please note that this project is intended solely for educational and learning pu
 
 > Source: https://github.com/WalidShahriar/E-Municipal
 
+
 <p align="center">
-  <strong>If you read this far, you now qualify for a virtual high-five. ✋🏻</strong><br>
-  <em>The End(cue dramatic music).</em>
+  <h2><strong>If you read this far, you now qualify for a virtual high-five. ✋🏻</strong></h2>
+  <br>
+  <h1><em>The End.</em></h1>
 </p>
+
 
 
 
