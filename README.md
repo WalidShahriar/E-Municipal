@@ -121,10 +121,16 @@ Please note that this project is intended solely for educational and learning pu
 
 
 <div align="center">
-  <h2><strong>If you read this far, you now qualify for a virtual high-five. ✋🏻</strong></h2>
-  <br>
-  <h1><em>The End.</em></h1>
+    <br>
+    <span style="font-size: 28px; font-weight: bold;">
+        If you read this far, you now qualify for a virtual high-five. ✋🏻
+    </span>
+    <br><br>
+    <span style="font-size: 36px; font-style: italic;">
+        The End.
+    </span>
 </div>
+
 
 
 
