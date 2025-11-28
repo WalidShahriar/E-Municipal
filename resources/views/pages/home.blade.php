@@ -25,6 +25,31 @@
     <button id="video_btn" onclick="toggleVideo()">&#9646;</button>
 </div>
 
+<div id="main_content_2">
+    <div id="services_4">
+        <a href="/services" id="services_4_1" class="service_4_box">
+            <h3>Explore Services</h3>
+            <p>Discover a wide range of municipal services available to you.</p>
+        </a>
+        
+        <a href="/complaints" id="services_4_2" class="service_4_box">
+            <h3>File a Complaint</h3>
+            <p>Report issues and help us improve our city services.</p>
+        </a>
+        
+        <a href="/payment" id="services_4_3" class="service_4_box">
+            <h3>Pay Bills</h3>
+            <p>Conveniently pay your municipal bills online.</p>
+        </a>
+
+        <a href="/updates" id="services_4_4" class="service_4_box">
+            <h3>Get Updates</h3>
+            <p>Stay informed with the latest news and updates from the city.</p>
+        </a>
+    </div>
+
+</div>
+
 @endsection
 
 @section('scripts')
