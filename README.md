@@ -124,7 +124,7 @@ Please note that this project is intended solely for educational and learning pu
     <br>
     <h3><strong>If you read this far, you now qualify for a virtual high-five. ✋🏻</strong></h3>
     <br>
-    <h3><em>°❀⋆.ೃ࿔*:･ The End. °❀⋆.ೃ࿔*:･</em></h3>
+    <h3><em>°❀⋆.ೃ࿔*:･__The End.__･:*࿔.ೃ⋆❀°</em></h3>
     <br>
 </div>
 
