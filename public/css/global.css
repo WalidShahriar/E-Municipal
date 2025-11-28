@@ -4,3 +4,11 @@
     box-sizing: border-box;
 }
 
+@import url('https://fonts.adobe.com/fonts/effra');
+
+@font-face {
+    font-family: "effra-cc";
+    src: url('{{ asset("fonts/effra-cc.woff2") }}') format('woff2'),
+         url('{{ asset("fonts/effra-cc.woff") }}') format('woff');
+}
+
