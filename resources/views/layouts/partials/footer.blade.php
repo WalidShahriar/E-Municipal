@@ -1,0 +1,86 @@
+<footer>
+    <div id="footer_container">
+        <div id="footer_sub_1">
+            <div id="footer_govt_logo_name">
+                <img src="{{ asset('images/govt_logo.png') }}" alt="bd_govt_logo" height="70px">
+                <p>City of Dhaka</p>
+            </div>
+
+            <div id="footer_subscribe">
+                <p>Subscribe to the monthly Dhaka resident newsletter for updates, news, and events.</p>
+                <a href="/subscrice" id="subscrice_btn">Subscribe</a>
+            </div>
+        </div>
+
+        <div id="footer_sub_2">
+            <div id="footer_links">
+                <div id="services">
+                    <ul>
+                        <li><a href="">Report an Issue</a></li>
+                        <li><a href="">Pay a Bill, Fine, or Fee</a></li>
+                        <li><a href="">City Careers</a></li>
+                        <li><a href="">Public Records</a></li>
+                        <li><a href="">Newsroom</a></li>
+                        <li><a href="">Proposed Taxes or Fees</a></li>
+                        <li><a href="">License and Permit Directory</a></li>
+                        <li><a href="">City Departments</a></li>
+                    </ul>
+                </div>
+                <div id="contact">
+                    <div id="contact_1">
+                        <div id="contact_heading_1">
+                            <p>Contact</p>
+                        </div>
+
+                        <div id="contact_1_address">
+                            <p>Dhaka City Hall</p><br>
+                            <p>200 D. Agargaon St.</p><br>
+                            <p>Dhaka, 1207</p><br>
+                            <P><a href="">Contact Us</a></P>
+                        </div>
+                    </div>
+
+                    <div id="contact_2">
+                        <div id="contact_heading_2">
+                            <p>Phone</p>
+                        </div>
+                        <div id="contact_2_number">
+                            <p><span>Phone 1:</span> +880 2 55012345</p><br>
+                            <p><span>Phone 2:</span> +880 2 55067890</p><br>
+                            <p>Water/Sewer/Trash/City Services Bill: <a href="">603-263-6251</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="accommodations">
+                    <div id="accommodations_heading">
+                        <p>Accommodations</p>
+                    </div>
+                    <div id="accommodations_message">
+                        <p>City of Dhaka is committed to ensuring that its services<br>are accessible to all people, including individuals<br>with disabilities. If you need accommodations,<br>please  <a href="">contact us</a>.</p>
+                    </div>
+                </div>
+
+                <div id="follow">   
+                    <div id="follow_heading">
+                        <p>Follow Us</p>
+                    </div>
+
+                    <div id="social_media_icons">
+                        <a href=""><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='195' height='195' viewBox='15 15 195 195'%3E%3Cpath fill='%23eef3f7' stroke='transparent' stroke-width='0' d='M112.5 61.7c-28.1 0-50.8 22.7-50.8 50.8s22.7 50.8 50.8 50.8 50.8-22.7 50.8-50.8-22.6-50.8-50.8-50.8zm0 83.8c-18.2 0-33-14.8-33-33s14.8-33 33-33 33 14.8 33 33-14.8 33-33 33zm64.8-85.9c0 6.6-5.3 11.9-11.9 11.9-6.6 0-11.9-5.3-11.9-11.9s5.3-11.9 11.9-11.9c6.6 0 11.9 5.3 11.9 11.9zm33.7 12c-.8-15.9-4.4-30-16-41.5-11.6-11.6-25.7-15.2-41.5-16-16.4-.9-65.4-.9-81.8 0-15.8.8-29.9 4.4-41.5 16S14.8 55.7 14 71.6c-.9 16.4-.9 65.4 0 81.8.8 15.9 4.4 30 16 41.5s25.7 15.2 41.5 16c16.4.9 65.4.9 81.8 0 15.9-.8 30-4.4 41.5-16 11.6-11.6 15.2-25.7 16-41.5 1.1-16.4 1.1-65.4.2-81.8zm-21.2 99.3c-3.5 8.7-10.1 15.4-18.8 18.8-13.1 5.2-44 4-58.4 4s-45.4 1.2-58.4-4c-8.7-3.5-15.4-10.1-18.8-18.8-5.2-13.1-4-44-4-58.4s-1.2-45.4 4-58.4c3.5-8.7 10.1-15.4 18.8-18.8 13.1-5.2 44-4 58.4-4s45.4-1.2 58.4 4c8.7 3.5 15.4 10.1 18.8 18.8 5.2 13.1 4 44 4 58.4s1.2 45.4-4 58.4z'/%3E%3C/svg%3E" alt="facebook_icon" height="30px"></a>
+                        <a href=""><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='195' height='195' viewBox='15 15 195 195'%3E%3Cpath fill='%23eef3f7' stroke='transparent' stroke-width='0' d='M205.9 65.4C203.7 57 197 50.3 188.7 48c-15.2-4.1-76.2-4.1-76.2-4.1s-61 0-76.2 4.1c-8.4 2.3-15 8.9-17.2 17.4C15 80.7 15 112.6 15 112.6s0 31.9 4.1 47.2c2.2 8.4 8.9 14.8 17.2 17.1 15.2 4.1 76.2 4.1 76.2 4.1s61 0 76.2-4.1c8.4-2.3 15-8.6 17.2-17.1 4.1-15.3 4.1-47.2 4.1-47.2s0-31.9-4.1-47.2zM92.6 141.6v-58l51 29-51 29z'/%3E%3C/svg%3E" alt="twitter_icon" height="30px"></a>
+                        <a href=""><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='195' height='195' viewBox='15 15 195 195'%3E%3Cpath fill='%23eef3f7' stroke='transparent' stroke-width='0' d='M157.7 124.6l5.4-35.2h-33.8V66.6c0-9.6 4.7-19 19.8-19h15.3v-30s-13.9-2.4-27.2-2.4c-27.8 0-46 16.8-46 47.4v26.8H60.4v35.2h30.9v85h38v-85h28.4z'/%3E%3C/svg%3E" alt="instagram_icon" height="30px"></a>
+                        <a href=""><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='195' height='195' viewBox='15 15 195 195'%3E%3Cpath fill='%23eef3f7' stroke='transparent' stroke-width='0' d='M168.6,24.4h29.9L133.1,99L210,200.6h-60.2L102.7,139l-53.9,61.6h-30l69.9-79.9L15,24.4h61.7l42.6,56.3L168.6,24.4L168.6,24.4z M158.1,182.8h16.6L67.7,41.3H49.9L158.1,182.8z'/%3E%3C/svg%3E" alt="youtube_icon" height="30px"></a>
+                        <a href=""><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='195' height='195' viewBox='15 15 195 195'%3E%3Cpath fill='%23eef3f7' stroke='transparent' stroke-width='0' d='M140.1,112.5c-8.1,0-14.6,7.6-14.6,16.9s6.5,16.9,14.6,16.9,14.6-7.6,14.6-16.9-6.5-16.9-14.6-16.9ZM79.3,113.8c7.5-3.6,16,.5,19.1,9.1s-.5,18.5-7.9,22c-7.5,3.6-16-.5-19.1-9.1s.5-18.5,7.9-22ZM210,111.5c0-14.6-10.2-26.5-22.7-26.5-5.3,0-10.4,2.1-14.5,6-14.2-11.1-32.8-18-52.7-19.3l8.9-37,27,6.2c.8,12.4,9.7,22.3,20.6,22.3s20.6-10.8,20.6-24-9.6-24-21-24-14.8,5.2-18.2,13.5l-36.6-8.4-12.6,51.3h-1.9c-20.6,1.1-39.9,8-54.7,19.5-4.1-3.9-9.2-6-14.5-6-12.5,0-22.7,11.9-22.7,26.5,0,9.5,4.3,18.2,11.4,23-.2,2.1-.4,4.2-.4,6.3,0,18.6,9.1,36.1,25.6,49.2,16.3,12.9,37.9,20.1,60.8,20.1s44.6-7.1,60.9-20.1c16.5-13.1,25.5-30.6,25.5-49.2,0-2.1-.1-4.2-.3-6.2,7.1-4.7,11.5-13.5,11.4-23ZM176.7,27.7c5.4,0,9.7,5,9.7,11.3s-4.4,11.3-9.7,11.3-9.7-5-9.7-11.3,4.4-11.3,9.7-11.3ZM25.9,111.5c0-7.7,5.3-13.9,12-13.9,1.9,0,3.8.6,5.5,1.6-6.3,6.8-10.9,14.3-13.8,22.4-2.3-2.7-3.6-6.3-3.6-10h0ZM167.3,179.5c-14.5,11.5-34,17.9-54.7,17.9s-40.2-6.3-54.7-17.9c-13.4-10.7-20.8-24.5-20.8-38.9,0-4.4.7-8.7,2-12.8,2.3-7.4,6.6-14.3,12.7-20.5,1.9-1.9,3.9-3.7,6-5.4h.1c0,0,0-.2,0-.2,14.5-11.5,33.9-17.8,54.7-17.8s40.2,6.3,54.7,17.8h0c0,0,.1.2.1.2,2.1,1.7,4.1,3.5,6,5.4,6.1,6.2,10.4,13.1,12.7,20.5.8,2.7,1.4,5.5,1.8,8.3.2,1.5.2,3,.2,4.5,0,14.4-7.4,28.2-20.8,38.9ZM195.5,121.4c-2.9-8.1-7.5-15.6-13.8-22.4,1.7-1,3.6-1.6,5.5-1.6,6.6,0,12,6.3,11.9,13.9,0,3.8-1.3,7.4-3.7,10h0ZM139.8,162.3c-.1.1-10.4,12.2-27.3,12.3-17.1,0-26.9-11.8-27.3-12.3-.7-.8-1.7-.8-2.4,0l-5.6,6.3c-.7.8-.7,2,0,2.8,0,0,0,0,0,0,1.4,1.6,14.1,16,35.3,16.1,21.1-.1,33.9-14.6,35.3-16.1.7-.8.7-2,0-2.8,0,0,0,0,0,0l-5.6-6.3c-.7-.7-1.7-.7-2.4,0h0Z'/%3E%3C/svg%3E" alt="reddit_icon" height="30px"></a>
+                        <a href=""><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='195' height='195' viewBox='15 15 195 195'%3E%3Cpath fill='%23eef3f7' stroke='transparent' stroke-width='0' d='M159.2,105.4c-0.8-0.4-1.7-0.8-2.6-1.2c-1.5-27.7-16.7-43.6-42.1-43.8c-0.1,0-0.2,0-0.3,0 c-15.2,0-27.9,6.5-35.7,18.3l14,9.6c5.8-8.8,15-10.7,21.7-10.7c0.1,0,0.2,0,0.2,0c8.4,0.1,14.7,2.5,18.8,7.2c3,3.5,5,8.2,6,14.3 c-7.4-1.3-15.5-1.7-24.1-1.2c-24.2,1.4-39.7,15.5-38.7,35.1c0.5,9.9,5.5,18.5,14,24.1c7.2,4.7,16.4,7,26,6.5 c12.7-0.7,22.6-5.5,29.5-14.3c5.3-6.7,8.6-15.4,10.1-26.3c6,3.6,10.5,8.4,13,14.2c4.2,9.8,4.4,25.9-8.7,39 c-11.5,11.5-25.3,16.5-46.2,16.6c-23.2-0.2-40.7-7.6-52.1-22.1c-10.7-13.6-16.2-33.1-16.4-58.2c0.2-25.1,5.7-44.7,16.4-58.2 c11.4-14.5,28.9-21.9,52.1-22.1c23.3,0.2,41.2,7.6,53,22.2c5.8,7.1,10.2,16.1,13.1,26.6l16.4-4.4c-3.5-12.9-9-24-16.5-33.2 C164.8,24.8,142.6,15.2,114,15h-0.1c-28.5,0.2-50.4,9.8-65.2,28.5c-13.1,16.7-19.9,39.9-20.1,68.9l0,0.1l0,0.1 c0.2,29.1,7,52.3,20.1,68.9c14.7,18.7,36.7,28.3,65.2,28.5h0.1c25.4-0.2,43.2-6.8,57.9-21.5c19.3-19.2,18.7-43.4,12.3-58.2 C179.7,119.7,171,111.1,159.2,105.4z M115.4,146.5c-10.6,0.6-21.6-4.2-22.2-14.4c-0.4-7.6,5.4-16,22.8-17c2-0.1,4-0.2,5.9-0.2 c6.3,0,12.3,0.6,17.6,1.8C137.6,141.9,125.8,146,115.4,146.5z'/%3E%3C/svg%3E" alt="threads_icon" height="30px"></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="copyright_section">
+                <p>&copy; 2025 <span id="footer_city">City of Dhaka</span>. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>

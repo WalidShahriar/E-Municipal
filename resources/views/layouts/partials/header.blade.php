@@ -1,0 +1,41 @@
+<header>
+    <div id="navbar_container" class="{{ $navbarClass ?? '' }}">
+        <div id="nav_1">
+
+            <div id="logo_name">
+                <div id="govt_logo">
+                    <img src="{{ asset('images/govt_logo.png') }}" alt="govt_logo" height="60px">
+                </div>
+                <div id="site_name">
+                    <a href="/home"><p>City of Dhaka</p></a>
+                </div>
+            </div>
+
+            <div id="searchbar">
+                <input type="text" id="search_input" placeholder="Search  Dhaka.gov">
+                <button id="search_button">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='195' height='195' viewBox='15 15 195 195'%3E%3Cpath fill='%23eef3f7' stroke='transparent' stroke-width='0' d='M203.8 192.6l-46.4-48.3c11.9-14.2 18.5-32 18.5-50.6 0-43.4-35.3-78.7-78.7-78.7S18.4 50.3 18.4 93.7s35.3 78.7 78.7 78.7c16.3 0 31.8-4.9 45.1-14.2l46.8 48.6c2 2 4.6 3.1 7.4 3.1 2.7 0 5.2-1 7.1-2.9 4.1-3.8 4.2-10.3.3-14.4zM97.1 35.5c32.1 0 58.2 26.1 58.2 58.2s-26.1 58.2-58.2 58.2-58.2-26.1-58.2-58.2S65 35.5 97.1 35.5z'/%3E%3C/svg%3E" alt="search logo">
+                </button>
+            </div>
+
+            <div id="login_signup">
+                <a href="/login.html" id="login">Login</a>
+                <p>/</p>
+                <a href="/signup.html">SignUp</a>
+            </div>
+            
+        </div>
+
+        
+        <div id="nav_2">
+            <ul>
+                <li><a href="/residents.html">Residents</a></li>
+                <li><a href="/services.html">Businesses</a></li>
+                <li><a href="/departments.html">Explore Dhaka</a></li>
+                <li><a href="/news.html">City Administration</a></li>
+                <li><a href="/events.html">News</a></li>
+                <li><a href="/contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
