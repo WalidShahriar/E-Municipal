@@ -1,0 +1,14 @@
+/* Signup styles — reuse the login styles with slight variations */
+@import url('login.css');
+
+.auth-card{ max-width: 540px }
+
+.form-group input{ /* slightly larger inputs */ padding: 12px 14px }
+
+.form-actions{ align-items: center }
+
+.btn.primary{ padding: 12px 18px }
+
+@media (max-width: 480px){
+    .auth-card{ padding: 18px }
+}

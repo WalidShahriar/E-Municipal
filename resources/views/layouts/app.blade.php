@@ -29,6 +29,7 @@
 
         {{-- Global JS (if any) --}}
         <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/header.js') }}"></script>
 
         {{-- Page-specific JS --}}
         @yield('scripts')
