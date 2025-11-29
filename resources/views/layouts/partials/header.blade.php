@@ -19,9 +19,9 @@
             </div>
 
             <div id="login_signup">
-                <a href="/login.html" id="login">Login</a>
+                <a href="/login" id="login">Login</a>
                 <p>/</p>
-                <a href="/signup.html">SignUp</a>
+                <a href="/signup">SignUp</a>
             </div>
             
         </div>
@@ -29,13 +29,101 @@
         
         <div id="nav_2">
             <ul>
-                <li><a href="/residents.html">Residents</a></li>
-                <li><a href="/services.html">Businesses</a></li>
-                <li><a href="/departments.html">Explore Dhaka</a></li>
-                <li><a href="/news.html">City Administration</a></li>
-                <li><a href="/events.html">News</a></li>
-                <li><a href="/contact.html">Contact Us</a></li>
+                <li class="nav-item"><p>Residents</p>
+                    <ul class="submenu">
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Permits</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><p>Businesses</p>
+                    <ul class="submenu">
+                        <li><a href="#">Licenses</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><p>Explore Dhaka</p>
+                    <ul class="submenu">
+                        <li><a href="#">Attractions</a></li>
+                        <li><a href="#">Parks</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><p>City Administration</p>
+                    <ul class="submenu">
+                        <li><a href="#">Departments</a></li>
+                        <li><a href="#">Budget</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><p>News</p>
+                    <ul class="submenu">
+                        <li><a href="#">Latest</a></li>
+                        <li><a href="#">Archives</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><p>Contact Us</p>
+                    <ul class="submenu">
+                        <li><a href="#">Contact Form</a></li>
+                        <li><a href="#">Offices</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
+    <button id="hamburger_btn" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+
+    <div id="mobile_sidebar" aria-hidden="true">
+        <div id="mobile_sidebar_inner">
+            <button id="mobile_close" aria-label="Close menu">&times;</button>
+            <nav id="mobile_nav">
+                <ul>
+                    <li class="mobile-item">
+                        <button class="mobile-toggle" aria-expanded="false">Residents</button>
+                        <ul class="mobile-submenu">
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Permits</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-item">
+                        <button class="mobile-toggle" aria-expanded="false">Businesses</button>
+                        <ul class="mobile-submenu">
+                            <li><a href="#">Licenses</a></li>
+                            <li><a href="#">Resources</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-item">
+                        <button class="mobile-toggle" aria-expanded="false">Explore Dhaka</button>
+                        <ul class="mobile-submenu">
+                            <li><a href="#">Attractions</a></li>
+                            <li><a href="#">Parks</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-item">
+                        <button class="mobile-toggle" aria-expanded="false">City Administration</button>
+                        <ul class="mobile-submenu">
+                            <li><a href="#">Departments</a></li>
+                            <li><a href="#">Budget</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-item">
+                        <button class="mobile-toggle" aria-expanded="false">News</button>
+                        <ul class="mobile-submenu">
+                            <li><a href="#">Latest</a></li>
+                            <li><a href="#">Archives</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-item">
+                        <button class="mobile-toggle" aria-expanded="false">Contact Us</button>
+                        <ul class="mobile-submenu">
+                            <li><a href="#">Contact Form</a></li>
+                            <li><a href="#">Offices</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="mobile_sidebar_overlay"></div>
 </header>
