@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Municipal Service Request Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="service_style.css">
-    
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -217,10 +215,12 @@
 
                 stepElement.innerHTML += `
                     <div class="flex flex-col items-center text-center">
+                        <!-- Circle Indicator -->
                         <div class="z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg ${circleColor} transition-colors duration-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${item.icon}"></path></svg>
                         </div>
                         
+                        <!-- Text Label -->
                         <div class="mt-2 text-xs md:text-sm ${textColor} w-full">
                             ${item.name}
                         </div>
@@ -368,6 +368,104 @@
             });
         });
     </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4;
+            min-height: 100vh;
+        }
+
+        .primary-card {
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -5px rgba(4, 120, 87, 0.2);
+        }
+
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .requested {
+            background-color: #fef9c3;
+            color: #a16207;
+        }
+
+        .pending-quote,
+        .awaiting-payment\/fee-verification,
+        .scheduled {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .work-in-progress {
+            background-color: #bfdbfe;
+            color: #1e40af;
+        }
+
+        .complete {
+            background-color: #a7f3d0;
+            color: #047857;
+        }
+
+        .rejected {
+            background-color: #fecaca;
+            color: #b91c1c;
+        }
+
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-top: 3px solid #0d9488;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: transform: rotate(360deg);
+            }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
 </head>
 
 <body class="p-4 md:p-8 flex justify-center items-start">
