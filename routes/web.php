@@ -16,6 +16,6 @@ Route::get('/signup', function () {
 Route::get('/Service', function () {
     return view('pages.user.Service');
 })->name('Service');
-Route::get('/Complaint', function () {
-    return view('pages.user.Complaint');
-})->name('Complaint');
+Route::get('/complaint_portal', function () {
+    return view('pages.user.complaint_portal');
+})->name('complaint_portal');
