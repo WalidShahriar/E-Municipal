@@ -13,6 +13,7 @@ Route::get('/login', function () {
 Route::get('/signup', function () {
     return view('pages.user.signup');
 });
-Route::get('/Service', function () {
+
+Route::get('/service', function () {
     return view('pages.user.Service');
 })->name('Service');

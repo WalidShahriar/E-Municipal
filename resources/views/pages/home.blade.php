@@ -29,7 +29,7 @@
 
 <div id="services_section">
     <div id="services_4">
-        <a href="/services" id="services_4_1" class="service_4_box">
+        <a href="/service" id="services_4_1" class="service_4_box">
             <h3>Request a Service</h3>
             <p>Discover a wide range of municipal services available to you.</p>
         </a>
