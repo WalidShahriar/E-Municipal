@@ -561,9 +561,7 @@
         { id: "S-005", approved: false },
       ];
 
-      /* ======================================
-   NAVIGATION (SPA)
-   ====================================== */
+      /* NAVIGATION (SPA) */
 
       document.querySelectorAll(".nav a").forEach((a) => {
         a.addEventListener("click", (e) => {
@@ -818,7 +816,7 @@
           },
         });
 
-        // Trend (mock)
+        // Trend (mock data)
         let labels = [
           "Jan–Jun 2024",
           "Jul–Dec 2024",
@@ -840,7 +838,7 @@
           },
         });
 
-        // Efficiency Radar (mock)
+        // Efficiency Radar (mock data)
         let effData = departments.map(
           (d) => Math.floor(Math.random() * 60) + 40
         );
@@ -861,7 +859,6 @@
       }
 
       /* Helpers */
-
       function getDept(id) {
         return departments.find((x) => x.id === id)?.name || id;
       }
