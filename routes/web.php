@@ -13,7 +13,7 @@ Route::get('/signup', function () {
     return view('pages.user.signup');
 });
 
-Route::get('/service', function () {
+Route::get('/Service', function () {
     return view('pages.user.Service');
 })->name('Service');
 Route::get('/complaint_portal', function () {
