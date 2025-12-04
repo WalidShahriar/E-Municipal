@@ -17,8 +17,7 @@
         window.closeModal = closeModal;
         window.renderServiceRequirements = renderServiceRequirements;
 
-        // Constants are moved into the client-side script for simplicity in this migration.
-        // In a complex Laravel app, these should be passed from a Controller using Blade.
+
         const departmentMap = {
             'NewLightingInstall': 'Electrical Planning',
             'Sidewalk': 'Public Infrastructure',
@@ -43,7 +42,7 @@
             { step: 4, name: 'Completed', statuses: ['Complete'], icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' }
         ];
 
-        // The following functions remain the same as they deal with DOM manipulation and styling.
+        
         
         function renderServiceRequirements() {
             const category = document.getElementById('category').value;
@@ -148,7 +147,7 @@
             });
         }
         
-        // --- 2. NEW: DOMContentLoaded & Form Submission Logic ---
+    
 
         document.addEventListener('DOMContentLoaded', () => {
             showView('mainNav');
@@ -159,20 +158,20 @@
             form.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
-                // Get form values
+                
                 const title = document.getElementById('title').value.trim();
                 const category = document.getElementById('category').value;
                 const description = document.getElementById('description').value.trim();
                 const location = document.getElementById('location').value.trim();
                 const attachmentFileName = document.getElementById('attachment').files.length > 0 ? document.getElementById('attachment').files[0].name : 'N/A';
                 
-                // Form Validation
+            
                 if (!title || !category || !description) {
                     showSubmitError('Please fill out all required fields (Title, Category, Description) marked with an asterisk (*).');
                     return;
                 }
                 
-                // Prepare the data payload
+            
                 const department = departmentMap[category] || departmentMap['Default'];
 
                 const newRequestData = {
@@ -181,8 +180,7 @@
                     category: category,
                     description: description,
                     location: location || 'Not Provided',
-                    // The attachment file itself would require a FormData object and backend file handling, 
-                    // but for now, we pass the name as per the original script structure.
+        
                     attachmentName: attachmentFileName, 
                     department: department,
                     // CSRF Token for Laravel security
@@ -190,7 +188,7 @@
                 };
 
                 try {
-                    // Send data to the new Laravel API endpoint
+                    
                     const response = await fetch('/api/requests', {
                         method: 'POST',
                         headers: {
@@ -204,7 +202,7 @@
                     const result = await response.json();
 
                     if (response.ok) {
-                        // Success: Show the modal with the ID returned by Laravel
+                        
                         showModal(result.id);
                         form.reset();
                         renderServiceRequirements();
@@ -212,7 +210,7 @@
                         // Failure (e.g., Validation error, Server error)
                         let errorMessage = 'Failed to submit request. Server Error.';
                         if (result.errors) {
-                             // Handle validation errors if provided by Laravel
+                             
                             errorMessage = Object.values(result.errors).flat().join(' ');
                         }
                         showSubmitError(errorMessage);
@@ -223,7 +221,7 @@
                 }
             });
 
-            // --- 3. NEW: Status Tracking Logic ---
+            
 
             const statusForm = document.getElementById('statusForm');
             const statusResult = document.getElementById('statusResult');
@@ -238,7 +236,7 @@
             statusForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
-                // Show loading state
+                
                 checkStatusButton.disabled = true;
                 statusButtonText.textContent = 'Checking...';
                 statusSpinner.classList.remove('hidden');
@@ -259,12 +257,12 @@
                 }
                 
                 try {
-                    // Fetch status from the Laravel API endpoint
+                    
                     const response = await fetch(`/api/requests/${inputId}`);
                     const foundRequest = await response.json();
 
                     if (response.ok) {
-                        // Success: Request found
+                        
                         const status = foundRequest.status || 'Requested';
 
                         document.getElementById('displayId').textContent = foundRequest.request_id; // Using request_id from Laravel model
@@ -289,7 +287,7 @@
                         }
                         statusResult.classList.remove('hidden');
                     } else {
-                        // Failure: Request not found (404) or other error
+                        
                         notFoundMessage.textContent = `Service Request ID "${inputId}" was not found in our records. Please verify the ID (e.g., SIR-25-00001) and try again.`;
                         statusNotFound.classList.remove('hidden');
                     }
@@ -299,7 +297,7 @@
                     notFoundMessage.textContent = `A network error occurred while attempting to check status for ID "${inputId}".`;
                     statusNotFound.classList.remove('hidden');
                 } finally {
-                    // Hide loading state
+                    
                     checkStatusButton.disabled = false;
                     statusButtonText.textContent = 'Track Status';
                     statusSpinner.classList.add('hidden');
@@ -308,7 +306,7 @@
         });
     </script>
     <style>
-        /* CSS remains identical */
+        
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
         body {
@@ -344,7 +342,7 @@
             color: #a16207;
         }
 
-        /* Adjusted selector for the status badge, replacing '\/' with '-' as done in JS */
+        
         .pending-quote,
         .awaiting-payment-fee-verification, 
         .scheduled {
