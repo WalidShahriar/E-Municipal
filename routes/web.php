@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ServiceRequestController; // <-- ADD THIS LINE
+use App\Http\Controllers\ServiceRequestController; 
 
 
 // --- NEW API ROUTES FOR SERVICE REQUESTS ---
