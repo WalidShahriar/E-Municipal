@@ -9,10 +9,7 @@ class ServiceRequest extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     * These fields can be safely updated via Model::create()
-     */
+    
     protected $fillable = [
         'request_id',
         'title',

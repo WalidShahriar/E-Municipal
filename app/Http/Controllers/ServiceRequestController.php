@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ServiceRequest;
-use Illuminate\Support\Str; // We will use this for the unique ID
+use Illuminate\Support\Str; 
 
 class ServiceRequestController extends Controller
 {
-    // Method to handle new request submissions (POST)
+    
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -16,13 +16,11 @@ class ServiceRequestController extends Controller
             'category' => 'required|string|max:50',
             'description' => 'required|string',
             'location' => 'nullable|string|max:255',
-            // Note: File upload logic will be added later
+            
             'department' => 'required|string|max:100',
         ]);
 
-        // --- Logic to Generate Unique SIR-ID (SIR-25-00001) ---
-        // In a real app, this should be done carefully to ensure uniqueness and sequence.
-        // For a start, we'll find the last ID and increment it.
+        
         $lastRequest = ServiceRequest::latest('id')->first();
         $lastIdNumber = $lastRequest ? (int) substr($lastRequest->request_id, -5) : 0;
         $newIdNumber = $lastIdNumber + 1;
@@ -46,7 +44,7 @@ class ServiceRequestController extends Controller
         return response()->json(['id' => $serviceRequest->request_id, 'message' => 'Request submitted successfully'], 201);
     }
 
-    // Method to handle status tracking (GET)
+    
     public function show($id)
     {
         $request = ServiceRequest::where('request_id', $id)->first();
