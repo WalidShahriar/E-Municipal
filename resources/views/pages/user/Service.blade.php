@@ -5,23 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Municipal Service Request Portal</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, addDoc, onSnapshot, collection, query, serverTimestamp, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        setLogLevel('Debug')
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        let db = null;
-        let auth = null;
-        let userId = null;
-        let requestsCollectionRef = null;
-        let isAuthReady = false;
+    
+    <script>
+        // NOTE: Firebase imports, initialization, and simulation logic have been removed.
+        // We will now communicate directly with the Laravel backend via AJAX (Fetch API).
+        
+        // Expose functions globally for HTML access (onclick, onchange)
         window.showView = showView;
         window.closeModal = closeModal;
         window.renderServiceRequirements = renderServiceRequirements;
+
+        // Constants are moved into the client-side script for simplicity in this migration.
+        // In a complex Laravel app, these should be passed from a Controller using Blade.
         const departmentMap = {
             'NewLightingInstall': 'Electrical Planning',
             'Sidewalk': 'Public Infrastructure',
@@ -46,82 +43,8 @@
             { step: 4, name: 'Completed', statuses: ['Complete'], icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' }
         ];
 
-
-        async function initFirebase() {
-            if (!firebaseConfig.apiKey) {
-                console.warn("Firebase configuration not found. Running in non-persistent simulation mode.");
-                isAuthReady = true;
-                userId = crypto.randomUUID();
-
-                let allRequests = [
-                    { id: 'SIR-25-00001', title: 'Pothole Repair', department: 'Public Infrastructure', status: 'Requested', description: 'Large pothole at city hall entrance.', location: 'Main and 1st', managerRemarks: 'Initial review complete. Awaiting scheduling.' },
-                    { id: 'SIR-25-00002', title: 'New Stop Sign', department: 'Central Administration', status: 'Pending Quote', description: 'Need a stop sign at school zone.', location: 'School Rd', managerRemarks: 'Quote issued. Awaiting payment from requestor.' },
-                    { id: 'SIR-25-00003', title: 'Park Bench Installation', department: 'Parks & Recreation Planning', status: 'Work in Progress', description: 'Installing three new benches in Central Park.', location: 'Central Park', managerRemarks: 'Installation started on Monday.' },
-                    { id: 'SIR-25-00004', title: 'Tree Removal Permit', department: 'Forestry Department', status: 'Complete', description: 'Removal of dead oak tree.', location: '10 Downing St', managerRemarks: 'Permit issued. Tree removal confirmed.' },
-                    { id: 'SIR-25-00005', title: 'Sidewalk Permit', department: 'Public Infrastructure', status: 'Rejected', description: 'Requested sidewalk extension.', location: '123 Fake St', managerRemarks: 'Request rejected due to zoning restrictions.' }
-                ];
-                window.currentRequestCount = 5;
-                window.allRequests = allRequests;
-            }
-
-            try {
-                const app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        userId = user.uid;
-                        const collectionPath = `/artifacts/${appId}/public/data/serviceRequests`;
-                        requestsCollectionRef = collection(db, collectionPath);
-                        isAuthReady = true;
-                        setupRequestListener();
-                    } else {
-                        userId = crypto.randomUUID();
-                        isAuthReady = true;
-                    }
-                });
-
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken).catch(() => signInAnonymously(auth));
-                } else {
-                    await signInAnonymously(auth);
-                }
-
-            } catch (e) {
-                console.error("Firebase initialization failed:", e);
-                isAuthReady = true;
-            }
-        }
-        function setupRequestListener() {
-
-            if (!firebaseConfig.apiKey) {
-                window.allRequests = window.allRequests || [];
-                return;
-            }
-
-            if (!db || !requestsCollectionRef) return;
-            const q = query(requestsCollectionRef);
-            onSnapshot(q, (snapshot) => {
-                let localRequests = [];
-                let maxCount = 0;
-                snapshot.forEach(doc => {
-                    const data = { ...doc.data(), docId: doc.id };
-                    localRequests.push(data);
-                    const idParts = data.id.split('-');
-                    const idNumber = parseInt(idParts[idParts.length - 1]);
-                    if (!isNaN(idNumber)) {
-                        maxCount = Math.max(maxCount, idNumber);
-                    }
-                });
-                window.currentRequestCount = maxCount;
-                window.allRequests = localRequests;
-                console.log(`Firestore Update: Loaded ${window.allRequests.length} requests.`);
-            }, (error) => {
-                console.error("Error listening to service requests:", error);
-            });
-        }
-
+        // The following functions remain the same as they deal with DOM manipulation and styling.
+        
         function renderServiceRequirements() {
             const category = document.getElementById('category').value;
             const requirementBox = document.getElementById('requirementBox');
@@ -181,10 +104,6 @@
             submitMessageBox.classList.add('bg-red-100', 'text-red-700');
             setTimeout(() => { submitMessageBox.classList.add('hidden'); }, 8000);
         }
-        const generateRequestID = (count) => {
-            const year = new Date().getFullYear().toString().slice(2);
-            return `SIR-${year}-${(count + 1).toString().padStart(5, '0')}`;
-        };
 
         function renderStatusTimeline(currentStatus) {
             const timelineContainer = document.getElementById('statusTimeline');
@@ -215,12 +134,10 @@
 
                 stepElement.innerHTML += `
                     <div class="flex flex-col items-center text-center">
-                        <!-- Circle Indicator -->
                         <div class="z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg ${circleColor} transition-colors duration-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${item.icon}"></path></svg>
                         </div>
                         
-                        <!-- Text Label -->
                         <div class="mt-2 text-xs md:text-sm ${textColor} w-full">
                             ${item.name}
                         </div>
@@ -230,9 +147,10 @@
                 timelineContainer.appendChild(stepElement);
             });
         }
+        
+        // --- 2. NEW: DOMContentLoaded & Form Submission Logic ---
 
         document.addEventListener('DOMContentLoaded', () => {
-            initFirebase();
             showView('mainNav');
             renderServiceRequirements();
 
@@ -241,57 +159,71 @@
             form.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
-                if (!isAuthReady) {
-                    showSubmitError('System initializing. Please wait a moment and try again.');
-                    return;
-                }
-
+                // Get form values
                 const title = document.getElementById('title').value.trim();
                 const category = document.getElementById('category').value;
                 const description = document.getElementById('description').value.trim();
                 const location = document.getElementById('location').value.trim();
                 const attachmentFileName = document.getElementById('attachment').files.length > 0 ? document.getElementById('attachment').files[0].name : 'N/A';
-
-
+                
+                // Form Validation
                 if (!title || !category || !description) {
                     showSubmitError('Please fill out all required fields (Title, Category, Description) marked with an asterisk (*).');
                     return;
                 }
+                
+                // Prepare the data payload
                 const department = departmentMap[category] || departmentMap['Default'];
-                const newRequestCount = (window.currentRequestCount || 0) + 1;
-                const requestId = generateRequestID(newRequestCount);
 
                 const newRequestData = {
-                    id: requestId,
+                    // NOTE: request_id is now generated by the Laravel backend.
                     title: title,
                     category: category,
                     description: description,
                     location: location || 'Not Provided',
-                    attachmentName: attachmentFileName,
+                    // The attachment file itself would require a FormData object and backend file handling, 
+                    // but for now, we pass the name as per the original script structure.
+                    attachmentName: attachmentFileName, 
                     department: department,
-                    status: 'Requested',
-                    managerRemarks: 'Awaiting payment/fee verification and initial review.',
-                    submittedBy: userId,
-                    timestamp: firebaseConfig.apiKey ? serverTimestamp() : new Date().toISOString()
+                    // CSRF Token for Laravel security
+                    _token: '{{ csrf_token() }}'
                 };
 
                 try {
-                    if (firebaseConfig.apiKey) {
-                        await addDoc(requestsCollectionRef, newRequestData);
-                    } else {
-                        window.allRequests.push(newRequestData);
-                        window.currentRequestCount = newRequestCount;
-                        console.log("SIMULATION: Request submitted to local memory:", newRequestData);
-                    }
+                    // Send data to the new Laravel API endpoint
+                    const response = await fetch('/api/requests', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        },
+                        body: JSON.stringify(newRequestData)
+                    });
 
-                    showModal(requestId);
-                    form.reset();
-                    renderServiceRequirements();
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        // Success: Show the modal with the ID returned by Laravel
+                        showModal(result.id);
+                        form.reset();
+                        renderServiceRequirements();
+                    } else {
+                        // Failure (e.g., Validation error, Server error)
+                        let errorMessage = 'Failed to submit request. Server Error.';
+                        if (result.errors) {
+                             // Handle validation errors if provided by Laravel
+                            errorMessage = Object.values(result.errors).flat().join(' ');
+                        }
+                        showSubmitError(errorMessage);
+                    }
                 } catch (e) {
-                    console.error("Error submitting service request to Firestore:", e);
-                    showSubmitError('Failed to submit request. Check console for details. (Did you wait for initialization?)');
+                    console.error("Error submitting service request:", e);
+                    showSubmitError('A network error occurred. Failed to reach the server.');
                 }
             });
+
+            // --- 3. NEW: Status Tracking Logic ---
 
             const statusForm = document.getElementById('statusForm');
             const statusResult = document.getElementById('statusResult');
@@ -303,9 +235,10 @@
             const rejectedNotice = document.getElementById('rejectedNotice');
 
 
-            statusForm.addEventListener('submit', function (e) {
+            statusForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
+                // Show loading state
                 checkStatusButton.disabled = true;
                 statusButtonText.textContent = 'Checking...';
                 statusSpinner.classList.remove('hidden');
@@ -316,59 +249,66 @@
 
                 const inputId = document.getElementById('requestIdInput').value.trim().toUpperCase();
 
-                if (!isAuthReady || !inputId) {
+                if (!inputId) {
                     checkStatusButton.disabled = false;
                     statusButtonText.textContent = 'Track Status';
                     statusSpinner.classList.add('hidden');
-
-                    notFoundMessage.textContent = !isAuthReady
-                        ? 'System initialization in progress. Please wait a few seconds before tracking status.'
-                        : 'Please enter a valid Service Request ID to check its status.';
+                    notFoundMessage.textContent = 'Please enter a valid Service Request ID to check its status.';
                     statusNotFound.classList.remove('hidden');
                     return;
                 }
+                
+                try {
+                    // Fetch status from the Laravel API endpoint
+                    const response = await fetch(`/api/requests/${inputId}`);
+                    const foundRequest = await response.json();
 
-                setTimeout(() => {
-                    checkStatusButton.disabled = false;
-                    statusButtonText.textContent = 'Track Status';
-                    statusSpinner.classList.add('hidden');
-
-                    const foundRequest = window.allRequests.find(c => c.id === inputId);
-
-                    if (foundRequest) {
+                    if (response.ok) {
+                        // Success: Request found
                         const status = foundRequest.status || 'Requested';
 
-                        document.getElementById('displayId').textContent = foundRequest.id;
+                        document.getElementById('displayId').textContent = foundRequest.request_id; // Using request_id from Laravel model
                         document.getElementById('displayTitle').textContent = foundRequest.title;
                         document.getElementById('displayDepartment').textContent = foundRequest.department;
                         document.getElementById('displayDescription').textContent = foundRequest.description;
                         document.getElementById('displayLocation').textContent = foundRequest.location;
-                        document.getElementById('displayRemarks').textContent = foundRequest.managerRemarks || 'Awaiting initial review by department.';
+                        document.getElementById('displayRemarks').textContent = foundRequest.manager_remarks || 'Awaiting initial review by department.';
 
                         const statusBadge = document.getElementById('displayStatus');
-                        const badgeClass = status.toLowerCase().replace(/ /g, '-');
+                        const badgeClass = status.toLowerCase().replace(/ /g, '-').replace(/\//g, '-');
                         statusBadge.className = 'status-badge';
                         statusBadge.classList.add(badgeClass);
                         statusBadge.textContent = status;
+                        
                         if (status === 'Rejected') {
                             rejectedNotice.classList.remove('hidden');
-                            statusResult.classList.remove('hidden');
-                            document.getElementById('statusTimelineContainer').classList.add('hidden'); // Hide timeline
+                            document.getElementById('statusTimelineContainer').classList.add('hidden'); 
                         } else {
                             renderStatusTimeline(status);
-                            document.getElementById('statusTimelineContainer').classList.remove('hidden'); // Show timeline
-                            statusResult.classList.remove('hidden');
+                            document.getElementById('statusTimelineContainer').classList.remove('hidden'); 
                         }
-
+                        statusResult.classList.remove('hidden');
                     } else {
+                        // Failure: Request not found (404) or other error
                         notFoundMessage.textContent = `Service Request ID "${inputId}" was not found in our records. Please verify the ID (e.g., SIR-25-00001) and try again.`;
                         statusNotFound.classList.remove('hidden');
                     }
-                }, 800);
+
+                } catch (e) {
+                    console.error("Error fetching status:", e);
+                    notFoundMessage.textContent = `A network error occurred while attempting to check status for ID "${inputId}".`;
+                    statusNotFound.classList.remove('hidden');
+                } finally {
+                    // Hide loading state
+                    checkStatusButton.disabled = false;
+                    statusButtonText.textContent = 'Track Status';
+                    statusSpinner.classList.add('hidden');
+                }
             });
         });
     </script>
     <style>
+        /* CSS remains identical */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
         body {
@@ -404,8 +344,9 @@
             color: #a16207;
         }
 
+        /* Adjusted selector for the status badge, replacing '\/' with '-' as done in JS */
         .pending-quote,
-        .awaiting-payment\/fee-verification,
+        .awaiting-payment-fee-verification, 
         .scheduled {
             background-color: #d1fae5;
             color: #065f46;
