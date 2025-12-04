@@ -79,12 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.addEventListener('click', () => closeSidebar());
     }
 
-    // allow horizontal scroll inside the sidebar nav if wide
-    const mobileNav = document.querySelector('#mobile_nav ul');
-    if (mobileNav) {
-        mobileNav.style.overflowX = 'auto';
-        mobileNav.style.whiteSpace = 'nowrap';
-    }
+    // Mobile nav is now properly styled with vertical layout
 
     // Mobile submenu toggles inside the sidebar
     const mobileToggles = document.querySelectorAll('#mobile_nav .mobile-toggle');

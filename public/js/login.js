@@ -36,12 +36,10 @@ document.addEventListener('DOMContentLoaded', function(){
             return;
         }
 
-        // For now just show a success state — backend integration later
-        form.querySelector('.btn.primary').textContent = 'Signing...';
-        form.querySelector('.btn.primary').disabled = true;
-        setTimeout(()=>{
-            form.querySelector('.btn.primary').textContent = 'Signed in';
-            form.querySelector('.btn.primary').disabled = false;
-        }, 900);
+        // Submit the form to the server when client-side validation passes
+        const btn = form.querySelector('.btn.primary');
+        btn.textContent = 'Signing in...';
+        btn.disabled = true;
+        form.submit();
     });
 });

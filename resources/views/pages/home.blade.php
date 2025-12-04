@@ -29,12 +29,12 @@
 
 <div id="services_section">
     <div id="services_4">
-        <a href="/service" id="services_4_1" class="service_4_box">
+        <a href="/Service" id="services_4_1" class="service_4_box">
             <h3>Request a Service</h3>
             <p>Discover a wide range of municipal services available to you.</p>
         </a>
         
-        <a href="/complaints" id="services_4_2" class="service_4_box">
+        <a href="/complaint_portal" id="services_4_2" class="service_4_box">
             <h3>File a Complaint</h3>
             <p>Report issues and help us improve our city services.</p>
         </a>
