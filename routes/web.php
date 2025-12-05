@@ -1,14 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\ServiceRequestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
-=======
-use App\Http\Controllers\ServiceRequestController; 
-
->>>>>>> af703c74cca72f18624ac9391d8ca394844907c5
 
 // --- NEW API ROUTES FOR SERVICE REQUESTS ---
 Route::post('/api/requests', [ServiceRequestController::class, 'store']);
