@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Municipal Complaint Portal | Submit & Track</title>
-    <!-- Load Tailwind CSS -->
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for a clean, professional look */
@@ -90,7 +92,6 @@
 <body class="p-4 md:p-8 flex justify-center items-start">
 
     <div class="max-w-4xl w-full">
-        <!-- Header -->
         <header class="text-center mb-8 p-6 bg-white rounded-xl card">
             <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900">
                 Complaint Portal
@@ -98,7 +99,6 @@
             <p class="text-gray-600 mt-2">Report Your Issues and Track Their Resolution.</p>
         </header>
 
-        <!-- Tab Navigation -->
         <div class="flex border-b border-gray-200 bg-white rounded-t-xl overflow-hidden card">
             <button id="tabSubmitBtn" class="tab-button active text-blue-700 flex-1 text-center" onclick="showTab('submit')" aria-controls="submitTab" aria-selected="true">
                 1. Submit a New Complaint
@@ -108,22 +108,18 @@
             </button>
         </div>
 
-        <!-- Main Content Area -->
         <div class="bg-white p-6 md:p-10 rounded-b-xl rounded-t-none card">
             
-            <!-- Tab 1: Complaint Submission Form -->
             <div id="submitTab" class="tab-content" role="tabpanel" aria-labelledby="tabSubmitBtn">
                 <h2 class="text-2xl font-bold mb-6 text-blue-800 border-b pb-3">Report a Problem</h2>
                 <form id="complaintForm" class="space-y-6">
                     
                     <div class="md:grid md:grid-cols-2 md:gap-6 space-y-6 md:space-y-0">
-                        <!-- Complaint Title -->
                         <div>
                             <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Complaint Title <span class="text-red-500">*</span></label>
                             <input type="text" id="title" name="title" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" placeholder="e.g., Broken Streetlight on Road 10">
                         </div>
                         
-                        <!-- Category -->
                         <div>
                             <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Category <span class="text-red-500">*</span></label>
                             <select id="category" name="category" required class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 transition duration-150">
@@ -137,21 +133,17 @@
                         </div>
                     </div>
 
-                    <!-- Description -->
                     <div>
                         <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description of the problem <span class="text-red-500">*</span></label>
                         <textarea id="description" name="description" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" placeholder="Explain the problem and exact location details..."></textarea>
                     </div>
 
-                    <!-- Location and Attachment Group -->
                     <div class="md:grid md:grid-cols-2 md:gap-6 space-y-6 md:space-y-0">
-                        <!-- Detailed Location -->
                         <div>
                             <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Detailed Location (Address/Landmark)</label>
                             <input type="text" id="location" name="location" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" placeholder="123 Main St, near the old library">
                         </div>
 
-                        <!-- Attachment -->
                         <div>
                             <label for="attachment" class="block text-sm font-medium text-gray-700 mb-1">Attachment (Photo Proof)</label>
                             <input type="file" id="attachment" name="attachment" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
@@ -164,11 +156,9 @@
                     </button>
                 </form>
 
-                <!-- Status/Error Message Box for Submission (Used only for errors) -->
                 <div id="submitMessageBox" class="mt-4 p-3 rounded-lg text-center font-medium hidden" role="alert" aria-live="assertive"></div>
             </div>
 
-            <!-- Tab 2: Complaint Status Check -->
             <div id="statusTab" class="tab-content hidden" role="tabpanel" aria-labelledby="tabStatusBtn">
                 <h2 class="text-2xl font-bold mb-6 text-blue-800 border-b pb-3">Check Your Complaint Status</h2>
                 
@@ -181,7 +171,6 @@
                     </button>
                 </form>
 
-                <!-- Status Results Display -->
                 <div id="statusResult" class="p-6 border-l-4 border-green-500 rounded-lg bg-green-50 hidden" role="region" aria-live="polite">
                     <h3 class="text-xl font-bold mb-4 text-green-800">Complaint Details</h3>
                     <div class="space-y-4">
@@ -201,7 +190,6 @@
                     </div>
                 </div>
 
-                <!-- Status Not Found Message -->
                 <div id="statusNotFound" class="p-5 border-l-4 border-red-500 rounded-lg bg-red-50 text-red-700 hidden" role="alert">
                     <p class="font-bold">⚠️ Complaint ID Not Found</p>
                     <p id="notFoundMessage" class="text-sm mt-1"></p>
@@ -210,7 +198,6 @@
         </div>
     </div>
 
-    <!-- Success Modal Overlay -->
     <div id="successModal" class="modal-overlay">
         <div class="bg-white p-8 md:p-10 rounded-xl max-w-lg w-full text-center shadow-2xl transform scale-95 transition-transform duration-300 ease-out">
             <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -231,45 +218,7 @@
     </div>
 
     <script>
-        // --- Storage and Initialization ---
-
-        const STORAGE_KEY = 'municipalComplaints';
-        const COUNTER_KEY = 'complaintCounter';
-
-        // Load or initialize complaints and counter from localStorage
-        function loadComplaints() {
-            try {
-                const stored = localStorage.getItem(STORAGE_KEY);
-                return stored ? JSON.parse(stored) : [];
-            } catch (e) {
-                console.error("Error loading complaints from local storage:", e);
-                return [];
-            }
-        }
-
-        function saveComplaints() {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(complaints));
-                localStorage.setItem(COUNTER_KEY, complaintCounter.toString());
-            } catch (e) {
-                console.error("Error saving complaints to local storage:", e);
-            }
-        }
-
-        let complaints = loadComplaints();
-        let complaintCounter = parseInt(localStorage.getItem(COUNTER_KEY)) || 1001; // Starting at 1001 for user-submitted tickets
-
-        // Department Assignment Logic
-        const departmentMap = {
-            'Electricity': 'Electrical Maintenance',
-            'Waste': 'Sanitation Services',
-            'Roads': 'Public Works Department',
-            'Water Supply': 'Water & Sewage Authority',
-            'Public Space': 'Parks & Recreation',
-            'Default': 'Central Administration'
-        };
-
-        // DOM Elements
+        // --- DOM Elements ---
         const form = document.getElementById('complaintForm');
         const submitMessageBox = document.getElementById('submitMessageBox');
         const statusForm = document.getElementById('statusForm');
@@ -280,8 +229,10 @@
         const checkStatusButton = document.getElementById('checkStatusButton');
         const statusButtonText = document.getElementById('statusButtonText');
         const statusSpinner = document.getElementById('statusSpinner');
+        const submitButton = document.getElementById('submitButton');
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); // Get the CSRF token
 
-        // --- Tab Management ---
+        // --- Tab Management (Logic remains the same) ---
 
         function showTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(tab => {
@@ -309,7 +260,7 @@
         }
         window.showTab = showTab; 
 
-        // --- Modal Control ---
+        // --- Modal Control (Logic remains the same) ---
 
         function showModal(id) {
             document.getElementById('modalComplaintId').textContent = id;
@@ -318,10 +269,11 @@
 
         function closeModal() {
             successModal.classList.remove('active');
+            showTab('submit'); // Optionally switch back to submit tab
         }
         window.closeModal = closeModal; 
 
-        // --- Helper Functions ---
+        // --- Helper Functions (Only Error remains) ---
 
         /**
          * Displays an error message in the submission message box.
@@ -336,66 +288,84 @@
             }, 8000);
         }
 
-        /**
-         * Generates a unique, sequential Complaint ID.
-         * @returns {string} The formatted Complaint ID.
-         */
-        function generateComplaintID() {
-            const date = new Date();
-            const year = date.getFullYear();
-            const id = `COMP-${year}-${complaintCounter.toString().padStart(4, '0')}`;
-            complaintCounter++;
-            return id;
-        }
-
-        // --- Complaint Submission Logic ---
+        // ------------------------------------------------------------------
+        // --- UPDATED: Complaint Submission Logic (Connects to Laravel) ---
+        // ------------------------------------------------------------------
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Disable button and show loading state
+            const originalText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+
             // 1. Collect Data
-            const title = document.getElementById('title').value.trim();
-            const category = document.getElementById('category').value;
-            const description = document.getElementById('description').value.trim();
-            const location = document.getElementById('location').value.trim();
-            const attachment = document.getElementById('attachment').files[0];
-
-            // 2. Client-side Validation (More robust validation can be added here)
-            if (!title || !category || !description) {
-                showSubmitError('Please fill out all required fields (Title, Category, Description) marked with an asterisk (*).');
-                return;
-            }
-
-            // 3. Assign Department & ID
-            const department = departmentMap[category] || departmentMap['Default'];
-            const complaintId = generateComplaintID();
-
-            // 4. Create new Complaint Object
-            const newComplaint = {
-                id: complaintId,
-                title: title,
-                category: category,
-                description: description,
-                location: location || 'Not Provided',
-                attachmentName: attachment ? attachment.name : 'N/A',
-                department: department,
-                status: 'Pending', 
-                timestamp: new Date().toISOString()
-            };
-
-            // 5. Store & Persist
-            complaints.unshift(newComplaint); 
-            saveComplaints(); 
-
-            // 6. Provide User Feedback (New Modal Instead of inline message)
-            showModal(complaintId);
+            const formData = new FormData(form);
+            const attachmentFile = formData.get('attachment');
             
-            // 7. Reset Form
-            form.reset();
+            // The Laravel backend expects a JSON body, not FormData, for simplicity.
+            // We convert FormData to a JSON object.
+            
+            // Note: We only pass the file name for now, as actual file upload requires more steps
+            if (attachmentFile && attachmentFile.name) {
+                formData.set('attachment_name', attachmentFile.name);
+            }
+            formData.delete('attachment');
+            
+            const data = Object.fromEntries(formData.entries());
+
+            // 2. Send Data to Laravel Backend
+            fetch('/api/complaints/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Pass the CSRF token in the header
+                    'X-CSRF-TOKEN': csrfToken 
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+                
+                if (!response.ok) {
+                    // Handle validation errors or server errors
+                    return response.json().then(err => { 
+                         // Check for Laravel validation errors (422)
+                        if (response.status === 422 && err.errors) {
+                            const errorKeys = Object.keys(err.errors);
+                            const firstError = err.errors[errorKeys[0]][0];
+                            throw new Error(`Validation Error: ${firstError}`);
+                        }
+                        throw new Error(err.message || `HTTP error! Status: ${response.status}`);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // 3. Provide User Feedback (Show modal with ID from backend)
+                    showModal(data.id);
+                    // 4. Reset Form
+                    form.reset();
+                } else {
+                     showSubmitError('An error occurred during submission: ' + (data.message || 'Unknown error.'));
+                }
+            })
+            .catch(error => {
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+                console.error('Submission Error:', error);
+                showSubmitError('Submission failed: ' + error.message);
+            });
         });
 
 
-        // --- Complaint Status Check Logic ---
+        // ------------------------------------------------------------------
+        // --- UPDATED: Complaint Status Check Logic (Connects to Laravel) ---
+        // ------------------------------------------------------------------
 
         statusForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -417,20 +387,27 @@
             statusButtonText.textContent = 'Checking...';
             statusSpinner.classList.remove('hidden');
 
-            // Simulate network delay for a professional feel (e.g., 800ms)
-            setTimeout(() => {
+            // Send GET request to the Laravel backend
+            fetch(`/api/complaints/status/${inputId}`)
+            .then(response => {
+                if (!response.ok) {
+                    // Throw an error if 404 (Not Found) or other HTTP error
+                    return response.json().then(err => { throw err; });
+                }
+                return response.json();
+            })
+            .then(data => {
                 
                 // Hide Loading State
                 checkStatusButton.disabled = false;
                 statusButtonText.textContent = 'Check Status';
                 statusSpinner.classList.add('hidden');
+                
+                if (data.success) {
+                    const foundComplaint = data.complaint;
 
-                // Search for the complaint
-                const foundComplaint = complaints.find(c => c.id === inputId);
-
-                if (foundComplaint) {
-                    // Update display fields
-                    document.getElementById('displayId').textContent = foundComplaint.id;
+                    // Update display fields using data from MySQL
+                    document.getElementById('displayId').textContent = foundComplaint.complaint_id;
                     document.getElementById('displayTitle').textContent = foundComplaint.title;
                     document.getElementById('displayDepartment').textContent = foundComplaint.department;
                     document.getElementById('displayDescription').textContent = foundComplaint.description;
@@ -448,40 +425,30 @@
                     statusResult.classList.remove('hidden');
 
                 } else {
-                    // Show not found message
+                    // Show not found message (should be caught by the catch block below for 404)
                     notFoundMessage.textContent = `Complaint ID "${inputId}" was not found in our records. Please verify the ID and try again.`;
                     statusNotFound.classList.remove('hidden');
                 }
-            }, 800); // End of simulated delay
+            })
+            .catch(error => {
+                // Hide Loading State
+                checkStatusButton.disabled = false;
+                statusButtonText.textContent = 'Check Status';
+                statusSpinner.classList.add('hidden');
+
+                // Handle 404 Not Found error
+                const errorMessage = error.message.includes('not found') 
+                    ? `Complaint ID "${inputId}" was not found in our records. Please verify the ID and try again.`
+                    : `An error occurred: ${error.message}`;
+                    
+                notFoundMessage.textContent = errorMessage;
+                statusNotFound.classList.remove('hidden');
+            });
         });
 
-        // Add a few test complaints if storage is empty
-        if (complaints.length === 0) {
-            complaints = [
-                { 
-                    id: 'COMP-2025-0001', 
-                    title: 'Large Pothole at Park Entrance', 
-                    category: 'Roads', 
-                    description: 'Pothole spanning half the lane near the park entrance. Requires immediate attention.', 
-                    location: 'Elm Street, opposite City Park', 
-                    department: 'Public Works Department', 
-                    status: 'Resolved',
-                    timestamp: new Date(Date.now() - 86400000).toISOString() 
-                },
-                { 
-                    id: 'COMP-2025-0002', 
-                    title: 'Uncollected Waste Bin', 
-                    category: 'Waste', 
-                    description: 'The community recycling bin on 5th avenue is overflowing onto the sidewalk for two days.', 
-                    location: 'Corner of 5th Ave and School Lane', 
-                    department: 'Sanitation Services', 
-                    status: 'In Progress', 
-                    timestamp: new Date().toISOString() 
-                }
-            ];
-            complaintCounter = 3; 
-            saveComplaints();
-        }
+        // ------------------------------------------------------------------
+        // --- CLEANUP: REMOVED ALL LOCAL STORAGE AND TEST DATA LOGIC HERE ---
+        // ------------------------------------------------------------------
 
         // Initialize by showing the submission tab
         document.addEventListener('DOMContentLoaded', () => {

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ComplaintController; 
 
 Route::get('/home', function () {
     return view('pages.home');
@@ -24,3 +25,6 @@ Route::get('/complaint_portal', function () {
 Route::get('/admin_panel', function () {
     return view('pages.admin.admin_panel');
 })->name('admin_panel');
+
+Route::post('/api/complaints/submit', [ComplaintController::class, 'store']);
+Route::get('/api/complaints/status/{id}', [ComplaintController::class, 'show']);
