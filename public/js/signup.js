@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const email = document.getElementById('email');
     const phone = document.getElementById('phone');
     const password = document.getElementById('password');
-    const confirm = document.getElementById('confirm_password');
+    const confirm = document.getElementById('password_confirmation');
 
     const nameError = document.getElementById('nameError');
     const emailError = document.getElementById('emailError');
@@ -47,13 +47,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
         if(!valid) return;
 
-        // Placeholder success state
+        // Submit the form to the server when client-side validation passes
         const btn = form.querySelector('.btn.primary');
         btn.textContent = 'Creating...';
         btn.disabled = true;
-        setTimeout(()=>{
-            btn.textContent = 'Created ✓';
-            btn.disabled = false;
-        }, 900);
+        form.submit();
     });
 });

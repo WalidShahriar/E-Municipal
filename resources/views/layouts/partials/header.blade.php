@@ -19,9 +19,22 @@
             </div>
 
             <div id="login_signup">
-                <a href="/login" id="login">Login</a>
-                <p>/</p>
-                <a href="/signup">SignUp</a>
+                @auth
+                    <a href="{{ route('profile') }}" id="login">Profile</a>
+                    @if(Auth::user()->isAdmin())
+                        <p>/</p>
+                        <a href="{{ route('admin_panel') }}">Admin Panel</a>
+                    @endif
+                    <p>/</p>
+                    <form method="POST" action="{{ route('logout') }}" style="display: inline; margin: 0; padding: 0;">
+                        @csrf
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" id="login">Login</a>
+                    <p>/</p>
+                    <a href="{{ route('signup') }}">SignUp</a>
+                @endauth
             </div>
             
         </div>
@@ -76,7 +89,30 @@
 
     <div id="mobile_sidebar" aria-hidden="true">
         <div id="mobile_sidebar_inner">
-            <button id="mobile_close" aria-label="Close menu">&times;</button>
+            <div id="mobile_sidebar_header">
+                <div id="mobile_logo_name">
+                    <img src="{{ asset('images/govt_logo.png') }}" alt="govt_logo" height="50px">
+                    <a href="/home"><p>City of Dhaka</p></a>
+                </div>
+                <button id="mobile_close" aria-label="Close menu">&times;</button>
+            </div>
+            
+            <div id="mobile_auth_section">
+                @auth
+                    <a href="{{ route('profile') }}" class="mobile-auth-link">Profile</a>
+                    @if(Auth::user()->isAdmin())
+                        <a href="{{ route('admin_panel') }}" class="mobile-auth-link">Admin Panel</a>
+                    @endif
+                    <form method="POST" action="{{ route('logout') }}" class="mobile-logout-form">
+                        @csrf
+                        <button type="submit" class="mobile-auth-link mobile-logout-btn">Logout</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="mobile-auth-link">Login</a>
+                    <a href="{{ route('signup') }}" class="mobile-auth-link">SignUp</a>
+                @endauth
+            </div>
+
             <nav id="mobile_nav">
                 <ul>
                     <li class="mobile-item">

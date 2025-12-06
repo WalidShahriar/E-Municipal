@@ -2,25 +2,46 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComplaintController; 
+use App\Http\Controllers\ServiceRequestController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
+
+// --- NEW API ROUTES FOR SERVICE REQUESTS ---
+Route::post('/api/requests', [ServiceRequestController::class, 'store']);
+Route::get('/api/requests/{id}', [ServiceRequestController::class, 'show']);
+// ------------------------------------------
+
+// Public routes - accessible to everyone
+Route::get('/', function () {
+    return redirect()->route('home');
+});
 
 Route::get('/home', function () {
     return view('pages.home');
-});
+})->name('home');
 
-Route::get('/login', function () {
-    return view('pages.user.login');
-});
-Route::get('/signup', function () {
-    return view('pages.user.signup');
-});
+// Authentication routes
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/signup', [AuthController::class, 'showSignupForm'])->name('signup');
+Route::post('/signup', [AuthController::class, 'register']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/Service', function () {
-    return view('pages.user.Service');
-})->name('Service');
+// Protected routes - require authentication
+Route::middleware(['auth'])->group(function () {
+    // User routes - accessible to all authenticated users
+    Route::get('/Service', function () {
+        return view('pages.user.Service');
+    })->name('Service');
 
-Route::get('/complaint_portal', function () {
-    return view('pages.user.complaint_portal');
-})->name('complaint_portal');
+    Route::get('/complaint_portal', function () {
+        return view('pages.user.complaint_portal');
+    })->name('complaint_portal');
+
+    // Profile routes
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
 
 Route::get('/admin_panel', function () {
     return view('pages.admin.admin_panel');
@@ -28,3 +49,9 @@ Route::get('/admin_panel', function () {
 
 Route::post('/api/complaints/submit', [ComplaintController::class, 'store']);
 Route::get('/api/complaints/status/{id}', [ComplaintController::class, 'show']);
+// Admin routes - require admin role
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin_panel', function () {
+        return view('pages.admin.admin_panel');
+    })->name('admin_panel');
+});
