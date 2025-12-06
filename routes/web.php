@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ComplaintController; 
 use App\Http\Controllers\ServiceRequestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
@@ -42,6 +43,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
+Route::get('/admin_panel', function () {
+    return view('pages.admin.admin_panel');
+})->name('admin_panel');
+
+Route::post('/api/complaints/submit', [ComplaintController::class, 'store']);
+Route::get('/api/complaints/status/{id}', [ComplaintController::class, 'show']);
 // Admin routes - require admin role
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin_panel', function () {
