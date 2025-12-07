@@ -55,3 +55,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
         return view('pages.admin.admin_panel');
     })->name('admin_panel');
 });
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index']);
+
+    Route::resource('/admin/users', UserController::class);
+    Route::resource('/admin/service-requests', ServiceRequestController::class);
+    Route::resource('/admin/complaints', ComplaintController::class);
+});

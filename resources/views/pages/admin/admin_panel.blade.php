@@ -41,7 +41,7 @@
 
       /* Sidebar */
       .sidebar {
-        background: linear-gradient(180deg, var(--bd-green), #00523f);
+        background: linear-gradient(180deg, var(--bd-green), #045f65ff);
         padding: 22px;
         color: white;
         display: flex;

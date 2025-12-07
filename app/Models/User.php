@@ -62,3 +62,13 @@ class User extends Authenticatable
         return $this->role === 0;
     }
 }
+
+public function isAdmin()
+{
+    return $this->role === 1;
+}
+
+public function isManager()
+{
+    return $this->role === 2;
+}
