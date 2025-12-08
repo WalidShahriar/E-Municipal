@@ -5,6 +5,13 @@ use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\ServiceRequestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminDashboardController; // Must be imported
+
+// 1. DASHBOARD ROUTE: Calls the Controller method to fetch data.
+Route::get('/dashboard_admin', [AdminDashboardController::class, 'index'])->name('dashboard_admin');
+
+// 2. AJAX UPDATE ROUTE: Handles status updates (POST request).
+Route::post('/admin/update-status', [AdminDashboardController::class, 'updateStatus'])->name('admin.update.status');
 
 // --- NEW API ROUTES FOR SERVICE REQUESTS ---
 Route::post('/api/requests', [ServiceRequestController::class, 'store']);
