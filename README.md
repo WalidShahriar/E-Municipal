@@ -27,7 +27,7 @@ In an era of "Smart Cities," E-Municipal replaces outdated manual processes with
 ## Team Task Distribution:
 | **Team Member Name**     | **Team Member ID**      | **Assigned Functional Requirements (FRs)**           |
 |--------------------------|-------------------------|------------------------------------------------------|
-| MD WALID SHAHRIAR        | 221-15-4646             | User Registration & Authentication, Home page        |
+| MD WALID SHAHRIAR        | 221-15-4646             | FR-1                                                 |
 | Partho Biswas            | 0242220005101012        | Complaint Submission & Management                    |
 | Sumaya Akter Eva         | 0242220005101042        | Service Request Submission & Management              |
 | Sworna Sarker            | 0242220005101040        | Department Dashboard & Task Assignment               |
@@ -35,13 +35,13 @@ In an era of "Smart Cities," E-Municipal replaces outdated manual processes with
 
 
 ## Functional Requirements (FRs)
-1. User registration, authentication, and role-based access, Home page, Search.
-2. Individual modules for complaint and service request submission.
-3. Ability to attach media (images/documents) to reports.
-4. Real-time tracking of complaint/service request status.
-5. Email or in-system notifications for status updates.
-6. Department dashboards for managing assigned tasks.
-7. Admin control panel for managing users, categories, and analytics.
+FR-1: User registration, authentication, and role-based access, Home page, Profile Page.
+FR-2: Individual modules for complaint and service request submission.
+FR-3: Ability to attach media (images/documents) to reports.
+FR-4: Real-time tracking of complaint/service request status.
+FR-5: Email or in-system notifications for status updates.
+FR-6: Department dashboards for managing assigned tasks.
+FR-7: Admin control panel for managing users, categories, and analytics.
 
 ## ⚙️ Installation Guide
 
