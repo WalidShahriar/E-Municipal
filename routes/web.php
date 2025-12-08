@@ -1,17 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ComplaintController; 
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\ServiceRequestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminDashboardController; // Must be imported
 
-// 1. DASHBOARD ROUTE: Calls the Controller method to fetch data.
-Route::get('/dashboard_admin', [AdminDashboardController::class, 'index'])->name('dashboard_admin');
 
-// 2. AJAX UPDATE ROUTE: Handles status updates (POST request).
-Route::post('/admin/update-status', [AdminDashboardController::class, 'updateStatus'])->name('admin.update.status');
 
 // --- NEW API ROUTES FOR SERVICE REQUESTS ---
 Route::post('/api/requests', [ServiceRequestController::class, 'store']);
@@ -26,6 +22,9 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('pages.home');
 })->name('home');
+
+// 2. AJAX UPDATE ROUTE: Handles status updates (POST request).
+Route::post('/admin/update-status', [AdminDashboardController::class, 'updateStatus'])->name('admin.update.status');
 
 // Authentication routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -61,4 +60,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin_panel', function () {
         return view('pages.admin.admin_panel');
     })->name('admin_panel');
+
+    // 1. DASHBOARD ROUTE: Calls the Controller method to fetch data.
+    Route::get('/dashboard_admin', [AdminDashboardController::class, 'index'])->name('dashboard_admin');
+
+
 });
