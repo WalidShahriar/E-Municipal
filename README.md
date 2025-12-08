@@ -36,13 +36,13 @@ In an era of "Smart Cities," E-Municipal replaces outdated manual processes with
 
 ## Functional Requirements (FRs)
 <ul>
-    FR-1: User registration, authentication, and role-based access, Home page, Profile Page.
-    FR-2: Individual modules for complaint and service request submission.
-    FR-3: Ability to attach media (images/documents) to reports.
-    FR-4: Real-time tracking of complaint/service request status.
-    FR-5: Email or in-system notifications for status updates.
-    FR-6: Department dashboards for managing assigned tasks.
-    FR-7: Admin control panel for managing users, categories, and analytics.
+    <li>FR-1: User registration, authentication, and role-based access, Home page, Profile Page.</li>
+    <li>FR-2: Individual modules for complaint and service request submission.</li>
+    <li>FR-3: Ability to attach media (images/documents) to reports.</li>
+    <li>FR-4: Real-time tracking of complaint/service request status.</li>
+    <li>FR-5: Email or in-system notifications for status updates.</li>
+    <li>FR-6: Department dashboards for managing assigned tasks.</li>
+    <li>FR-7: Admin control panel for managing users, categories, and analytics.</li>
 </ul>
 
 
