@@ -4,8 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Municipality Dashboard</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <style>
+    /* Basic CSS based on your original file structure */
     body {
         font-family: Arial, sans-serif;
         background: #f2f2f2;
@@ -58,8 +60,7 @@
     <table>
         <thead>
             <tr>
-                <th>Complaint ID</th>
-                <th>Service Request ID</th>
+                <th>Type</th> <th>ID</th> 
                 <th>Description</th>
                 <th>Department</th>
                 <th>Status</th>
@@ -67,70 +68,71 @@
         </thead>
 
         <tbody id="dataTable">
-            <!-- Data will be added by JavaScript -->
+            {{-- Loop through the combined data passed from the Controller --}}
+            @foreach($dashboardData as $item)
+            <tr>
+                <td>{{ $item->type }}</td>
+                {{-- Format the ID based on the type (C- for Complaint, S- for Service Request) --}}
+                <td>{{ $item->type === 'Complaint' ? 'C-' . $item->id : 'S-' . $item->id }}</td>
+                <td>{{ $item->description }}</td>
+                <td>{{ $item->department }}</td>
+                <td>
+                    {{-- The onchange event calls the JavaScript function with the item's ID, Type, and the new Status value --}}
+                    <select onchange="updateStatus('{{ $item->id }}', '{{ $item->type }}', this.value)">
+                        {{-- Loop through the status options defined for this item in the controller --}}
+                        @foreach($item->statusOptions as $option)
+                            <option 
+                                value="{{ $option }}" 
+                                {{ $option === $item->status ? 'selected' : '' }}
+                            >
+                                {{ $option }}
+                            </option>
+                        @endforeach
+                    </select>
+                </td>
+            </tr>
+            @endforeach
         </tbody>
     </table>
+
+    @if($dashboardData->isEmpty())
+        <p style="text-align: center; margin-top: 20px;">No records found.</p>
+    @endif
 </div>
 
 <script>
-    // Sample data for complaints + services
-    let dashboardData = [
-        {
-            complaintId: "C-101",
-            serviceId: "S-201",
-            description: "Garbage not collected",
-            department: "Sanitation",
-            status: "Pending",
-            statusOptions: ["Pending", "In Progress", "Resolved", "Closed"]
-        },
-        {
-            complaintId: "C-102",
-            serviceId: "S-202",
-            description: "Street light not working",
-            department: "Electricity",
-            status: "In Progress",
-            statusOptions: ["Pending", "In Progress", "Resolved", "Closed"]
-        },
-        {
-            complaintId: "C-103",
-            serviceId: "S-203",
-            description: "Water leakage",
-            department: "Water Supply",
-            status: "Requested",
-            statusOptions: ["Requested", "Reviewing/Approved", "Work in Progress", "Completed"]
-        }
-    ];
+    // Get the CSRF token from the meta tag
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    function loadTable() {
-        let table = document.getElementById("dataTable");
-        table.innerHTML = "";
-
-        dashboardData.forEach((item, index) => {
-            let row = `
-                <tr>
-                    <td>${item.complaintId}</td>
-                    <td>${item.serviceId}</td>
-                    <td>${item.description}</td>
-                    <td>${item.department}</td>
-                    <td>
-                        <select onchange="updateStatus(${index}, this.value)">
-                            ${item.statusOptions.map(option =>
-                                <option value="${option}" ${option === item.status ? "selected" : ""}>${option}</option>
-                            ).join("")}
-                        </select>
-                    </td>
-                </tr>
-            `;
-            table.innerHTML += row;
+    function updateStatus(id, type, newStatus) {
+        // Send an AJAX (fetch) request to the Laravel backend
+        fetch("{{ route('admin.update.status') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Laravel requires the CSRF token for all POST requests
+                'X-CSRF-TOKEN': csrfToken 
+            },
+            // Send the data as JSON
+            body: JSON.stringify({
+                id: id,
+                type: type, // 'Complaint' or 'Service Request'
+                status: newStatus
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`Status for ${type} #${id} successfully updated to: ${newStatus}`);
+            } else {
+                alert('Failed to update status.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while communicating with the server.');
         });
     }
-
-    function updateStatus(index, newStatus) {
-        dashboardData[index].status = newStatus;
-        alert("Status updated to: " + newStatus);
-    }
-
-    loadTable();
 </script>
 
 </body>
