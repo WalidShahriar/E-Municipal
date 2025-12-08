@@ -36,10 +36,10 @@
                     <a href="{{ route('signup') }}">SignUp</a>
                 @endauth
             </div>
-            
+
         </div>
 
-        
+
         <div id="nav_2">
             <ul>
                 <li class="nav-item"><p>Residents</p>
@@ -62,7 +62,7 @@
                 </li>
                 <li class="nav-item"><p>City Administration</p>
                     <ul class="submenu">
-                        <li><a href="#">Departments</a></li>
+                        <li><a href="/dashboard_admin">Municipal Dashboard</a></li>
                         <li><a href="#">Budget</a></li>
                     </ul>
                 </li>
@@ -96,7 +96,7 @@
                 </div>
                 <button id="mobile_close" aria-label="Close menu">&times;</button>
             </div>
-            
+
             <div id="mobile_auth_section">
                 @auth
                     <a href="{{ route('profile') }}" class="mobile-auth-link">Profile</a>
