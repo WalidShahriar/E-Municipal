@@ -63,3 +63,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('/admin/service-requests', ServiceRequestController::class);
     Route::resource('/admin/complaints', ComplaintController::class);
 });
+
+
+use App\Http\Controllers\AdminDashboardController;
+Route::get('/admin_panel', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
