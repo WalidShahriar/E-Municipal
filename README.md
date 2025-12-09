@@ -27,7 +27,7 @@ In an era of "Smart Cities," E-Municipal replaces outdated manual processes with
 ## Team Task Distribution:
 | **Team Member Name**     | **Team Member ID**      | **Assigned Functional Requirements (FRs)**           |
 |--------------------------|-------------------------|------------------------------------------------------|
-| MD WALID SHAHRIAR        | 221-15-4646             | User Registration & Authentication, Home page        |
+| MD WALID SHAHRIAR        | 221-15-4646             | FR-1, FR-8                                           |
 | Partho Biswas            | 0242220005101012        | Complaint Submission & Management                    |
 | Sumaya Akter Eva         | 0242220005101042        | Service Request Submission & Management              |
 | Sworna Sarker            | 0242220005101040        | Department Dashboard & Task Assignment               |
@@ -35,13 +35,17 @@ In an era of "Smart Cities," E-Municipal replaces outdated manual processes with
 
 
 ## Functional Requirements (FRs)
-1. User registration, authentication, and role-based access, Home page, Search.
-2. Individual modules for complaint and service request submission.
-3. Ability to attach media (images/documents) to reports.
-4. Real-time tracking of complaint/service request status.
-5. Email or in-system notifications for status updates.
-6. Department dashboards for managing assigned tasks.
-7. Admin control panel for managing users, categories, and analytics.
+<ul>
+    <li>FR-1: User registration, authentication, and role-based access, Home page, Profile Page.</li>
+    <li>FR-2: Individual modules for complaint and service request submission.</li>
+    <li>FR-3: Ability to attach media (images/documents) to reports.</li>
+    <li>FR-4: Real-time tracking of complaint/service request status.</li>
+    <li>FR-5: Email or in-system notifications for status updates.</li>
+    <li>FR-6: Department dashboards for managing assigned tasks.</li>
+    <li>FR-7: Admin control panel for managing users, categories, and analytics.</li>
+    <li>FR-8: Integration of AI</li>
+</ul>
+
 
 ## ⚙️ Installation Guide
 

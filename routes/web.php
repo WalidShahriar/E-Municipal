@@ -5,7 +5,8 @@ use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\ServiceRequestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminDashboardController; // Must be imported
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ChatbotController;
 
 
 
@@ -22,6 +23,8 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('pages.home');
 })->name('home');
+
+Route::post('/chatbot/ask', [ChatbotController::class, 'chat']);
 
 // 2. AJAX UPDATE ROUTE: Handles status updates (POST request).
 Route::post('/admin/update-status', [AdminDashboardController::class, 'updateStatus'])->name('admin.update.status');
@@ -66,3 +69,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 });
+
+use App\Http\Controllers\AdminController;
+
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
