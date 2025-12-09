@@ -10,7 +10,7 @@
 
 <div id="main_content_1">
     <video autoplay muted loop playsinline class="back-video" id="hero_video">
-        <source src="{{ asset('videos/VN20251129_174719.mp4') }}" type="video/mp4">    
+        <source src="{{ asset('videos/VN20251129_174719.mp4') }}" type="video/mp4">
     </video>
 
     <div class="video-overlay"></div>
@@ -33,12 +33,12 @@
             <h3>Request a Service</h3>
             <p>Discover a wide range of municipal services available to you.</p>
         </a>
-        
+
         <a href="/complaint_portal" id="services_4_2" class="service_4_box">
             <h3>File a Complaint</h3>
             <p>Report issues and help us improve our city services.</p>
         </a>
-        
+
         <a href="/payment" id="services_4_3" class="service_4_box">
             <h3>Pay Bills</h3>
             <p>Conveniently pay your municipal bills online.</p>
@@ -54,12 +54,12 @@
 <div id="main_content_2">
     <!-- Parallax background -->
     <div class="parallax-bg" style="background-image: url('{{ asset('images/bangladesh.jpg') }}')"></div>
-    
+
     <!-- Parallax content -->
     <div class="parallax-content">
         <h2 class="explore-title">Explore Dhaka</h2>
         <p class="explore-subtitle">Discover the Rich History and Culture of Bangladesh's Capital</p>
-        
+
         <div class="landmark-cards">
             <!-- Landmark 1: Lalbagh Fort -->
             <div class="landmark-card">
@@ -114,6 +114,60 @@
                     <p>A serene green space in the heart of the city, ideal for relaxation and experiencing Dhaka's modern recreational culture.</p>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<button class="chat-toggle-btn" onclick="toggleChat()" id="chat-toggle-button">
+    <svg class="chat-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="currentColor"/>
+    </svg>
+    <span class="chat-btn-text">Chat Support</span>
+    <span class="chat-badge">1</span>
+</button>
+
+<div class="chat-container" id="chat-window">
+    <div class="chat-header">
+        <div class="chat-header-content">
+            <div class="chat-avatar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H11V21H5V3H13V9H21ZM14 10V12H22V10H14ZM14 14V16H22V14H14ZM14 18V20H19V18H14Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <div class="chat-header-info">
+                <h3>Dhaka City Assistant</h3>
+                <p class="chat-status">Online • Usually replies instantly</p>
+            </div>
+        </div>
+        <button class="chat-close-btn" onclick="toggleChat()" aria-label="Close chat">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+    </div>
+    <div class="chat-body" id="chat-messages">
+        <div class="chat-welcome">
+            <div class="bot-message">
+                <div class="message-avatar">AI</div>
+                <div class="message-content">
+                    <div class="message-text">Hello! 👋 I'm your Dhaka City Assistant. I can help you with:</div>
+                    <div class="message-options">
+                        <span class="option-chip">Bangladesh Festivals</span>
+                        <span class="option-chip">Human Support</span>
+                    </div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chat-footer">
+        <div class="chat-input-wrapper">
+            <input type="text" id="chat-input" placeholder="Type your message here..." onkeypress="handleEnter(event)">
+            <button class="chat-send-btn" onclick="sendMessage()" aria-label="Send message">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="currentColor"/>
+                </svg>
+            </button>
         </div>
     </div>
 </div>
