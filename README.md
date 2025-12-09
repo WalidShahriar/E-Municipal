@@ -21,6 +21,11 @@ In an era of "Smart Cities," E-Municipal replaces outdated manual processes with
 * **Frontend:** Blade Templates, HTML5, CSS3, JavaScript
 * **Database:** MySQL
 
+### 📸 Screenshots
+<img width="1920" height="1080" alt="Screenshot 2025-12-09 154501" src="https://github.com/user-attachments/assets/6b34fb3a-ee82-407b-9863-87b35c63d3bf" />
+<img width="1920" height="1080" alt="Screenshot 2025-12-09 154554" src="https://github.com/user-attachments/assets/07ee3c7e-8eae-411c-80ea-dfee7ad9b893" />
+
+
 ---
 *Note: While currently modeled for Dhaka, this architecture is modular and scalable for any municipal corporation.*
 
