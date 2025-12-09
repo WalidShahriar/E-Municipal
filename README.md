@@ -27,23 +27,29 @@ In an era of "Smart Cities," E-Municipal replaces outdated manual processes with
 ## Team Task Distribution:
 | **Team Member Name**     | **Team Member ID**      | **Assigned Functional Requirements (FRs)**           |
 |--------------------------|-------------------------|------------------------------------------------------|
-| MD WALID SHAHRIAR        | 221-15-4646             | FR-1, FR-8                                           |
-| Partho Biswas            | 0242220005101012        | Complaint Submission & Management                    |
-| Sumaya Akter Eva         | 0242220005101042        | Service Request Submission & Management              |
-| Sworna Sarker            | 0242220005101040        | Department Dashboard & Task Assignment               |
-| Itti Samur Tunib         | 0242220005101335        | Admin Panel & Analytics                              |
+| MD WALID SHAHRIAR        | 221-15-4646             | FR-1, FR-2, FR-10                                    |
+| Partho Biswas            | 0242220005101012        | FR-3, FR-4                                           |
+| Sumaya Akter Eva         | 0242220005101042        | FR-5, FR-6                                           |
+| Sworna Sarker            | 0242220005101040        | FR-7                                                 |
+| Itti Samur Tunib         | 0242220005101335        | FR-8, FR-9                                           |
 
 
 ## Functional Requirements (FRs)
 <ul>
     <li>FR-1: User registration, authentication, and role-based access, Home page, Profile Page.</li>
-    <li>FR-2: Individual modules for complaint and service request submission.</li>
-    <li>FR-3: Ability to attach media (images/documents) to reports.</li>
-    <li>FR-4: Real-time tracking of complaint/service request status.</li>
-    <li>FR-5: Email or in-system notifications for status updates.</li>
-    <li>FR-6: Department dashboards for managing assigned tasks.</li>
-    <li>FR-7: Admin control panel for managing users, categories, and analytics.</li>
-    <li>FR-8: Integration of AI</li>
+    <li>FR-2: The system shall provide role-based access for Citizens, Officers, and Admins.</li>
+    <li>FR-3: The system shall allow citizens to submit complaints with necessary details and 
+attachments.</li>
+    <li>FR-4: The system shall generate unique Complaint IDs and assign each complaint to the 
+correct department. </li>
+    <li>FR-5: The system shall allow citizens to submit service requests with required information.</li>
+    <li>FR-6: The system shall allow officers to update the status of complaints and service requests. </li>
+    <li>FR-7: The system shall provide department dashboards for viewing and managing assigned 
+cases. </li>
+    <li>FR-8: The system shall allow admins to manage users, categories, and departments. </li>
+    <li>FR-9: The system shall securely store all data and maintain a basic audit log for important 
+actions.  </li>
+    <li>FR-10: Integration of AI</li>
 </ul>
 
 
