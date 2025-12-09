@@ -10,10 +10,10 @@ use App\Http\Controllers\ChatbotController;
 
 
 
-// --- NEW API ROUTES FOR SERVICE REQUESTS ---
+
 Route::post('/api/requests', [ServiceRequestController::class, 'store']);
 Route::get('/api/requests/{id}', [ServiceRequestController::class, 'show']);
-// ------------------------------------------
+
 
 // Public routes - accessible to everyone
 Route::get('/', function () {
