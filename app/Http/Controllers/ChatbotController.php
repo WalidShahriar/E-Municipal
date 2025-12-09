@@ -34,17 +34,46 @@ class ChatbotController extends Controller
             If the user asks about anything else, politely say you can only help with festivals or support contacts.
 
             DATA:
+            - New Year Day: January 1
+            - Language Martyrs Day / International Mother Language Day: February 21
+            - Sheikh Mujibur Rahman Birthday / National Children Day: March 17
             - Independence Day: March 26
+            - Pohela Boishakh (Bangla New Year): April 14
+            - May Day (Labour Day): May 1
+            - National Mourning Day: August 15
             - Victory Day: December 16
-            - Pohela Boishakh: April 14
-            - Language Martyrs' Day: February 21
-            - Eid-ul-Fitr/Adha: Dates depend on moon sighting.
+            - Christmas Day: December 25
+            - Shab-e-Meraj: Date varies (Islamic calendar)
+            - Shab-e-Barat: Date varies
+            - Ramadan: Month varies
+            - Shab-e-Qadr: Date varies (last 10 nights of Ramadan)
+            - Eid-ul-Fitr: Date varies
+            - Eid-ul-Adha: Date varies
+            - Islamic New Year: Date varies
+            - Ashura (10 Muharram): Date varies
+            - Eid-e-Milad-un-Nabi: Date varies
+            - Saraswati Puja: January/February (date varies)
+            - Durga Puja: September/October (date varies)
+            - Kali Puja: October/November (date varies)
+            - Janmashtami: August (date varies)
+            - Buddha Purnima: May (date varies)
+            - Christmas: December 25
+            - Amar Ekushey Book Fair: Entire month of February
+            - Pohela Falgun / Spring Festival: February 13
+            - Basanta Utsab (Charukola): February 13
+            - Mangal Shobhajatra (Pohela Boishakh procession): April 14
+            - Dhaka International Trade Fair (DITF): January to February
+            - Dhaka Art Summit: Every 2 years (January/February)
+            - Dhaka Lit Fest: Varies (usually January)
+            - Bengal Classical Music Festival: Varies (not every year)
+            - Nobanno Utsab: Early November
+            - Pitha Utsab (Winter Cake Festival): December to January (date varies)
 
             CONTACT INFO (Provide this only if asked for human help/support):
-            - Officer Name: Md. Rafiqul Islam
-            - Phone: +880 1234 567890
+            - Officer Name: MD WALID SHAHRIAR
+            - Phone: +880 1568 485268
             - Email: support@dhaka.gov.bd
-            - Address: Nagar Bhaban, Dhaka
+            - Address: Dhanmondi, Dhaka
         ";
 
         try {
@@ -73,13 +102,13 @@ class ChatbotController extends Controller
         } catch (\Exception $e) {
             // Log the actual error for debugging
             \Log::error('Chatbot error: ' . $e->getMessage());
-            
+
             // Return a more helpful error message
             $errorMessage = 'Sorry, I am having trouble connecting right now.';
             if (config('app.debug')) {
                 $errorMessage .= ' Error: ' . $e->getMessage();
             }
-            
+
             return response()->json(['reply' => $errorMessage], 500);
         }
     }
@@ -90,7 +119,7 @@ class ChatbotController extends Controller
     private function makeOpenAIRequest($apiKey, $systemPrompt, $userMessage, $httpClientOptions)
     {
         $httpClient = new Client($httpClientOptions);
-        
+
         $response = $httpClient->post(config('openai.base_uri') . '/chat/completions', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $apiKey,
@@ -106,7 +135,7 @@ class ChatbotController extends Controller
         ]);
 
         $data = json_decode($response->getBody()->getContents(), true);
-        
+
         // Return in the same format as OpenAI SDK
         return (object) [
             'choices' => [
