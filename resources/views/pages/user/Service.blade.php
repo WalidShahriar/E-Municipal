@@ -9,10 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        // NOTE: Firebase imports, initialization, and simulation logic have been removed.
-        // We will now communicate directly with the Laravel backend via AJAX (Fetch API).
-        
-        // Expose functions globally for HTML access (onclick, onchange)
+
         window.showView = showView;
         window.closeModal = closeModal;
         window.renderServiceRequirements = renderServiceRequirements;
