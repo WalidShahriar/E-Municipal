@@ -27,7 +27,7 @@ In an era of "Smart Cities," E-Municipal replaces outdated manual processes with
 ## Team Task Distribution:
 | **Team Member Name**     | **Team Member ID**      | **Assigned Functional Requirements (FRs)**           |
 |--------------------------|-------------------------|------------------------------------------------------|
-| MD WALID SHAHRIAR        | 221-15-4646             | FR-1                                                 |
+| MD WALID SHAHRIAR        | 221-15-4646             | FR-1, FR-8                                           |
 | Partho Biswas            | 0242220005101012        | Complaint Submission & Management                    |
 | Sumaya Akter Eva         | 0242220005101042        | Service Request Submission & Management              |
 | Sworna Sarker            | 0242220005101040        | Department Dashboard & Task Assignment               |
@@ -43,6 +43,7 @@ In an era of "Smart Cities," E-Municipal replaces outdated manual processes with
     <li>FR-5: Email or in-system notifications for status updates.</li>
     <li>FR-6: Department dashboards for managing assigned tasks.</li>
     <li>FR-7: Admin control panel for managing users, categories, and analytics.</li>
+    <li>FR-8: Integration of AI</li>
 </ul>
 
 
